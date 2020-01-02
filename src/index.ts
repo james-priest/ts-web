@@ -6,5 +6,5 @@ import { User } from './models/User';
 // user.save();
 
 // Add new record
-const user = new User({ name: 'new record', age: 21 });
-user.save();
+// const user = new User({ name: 'new record', age: 21 });
+// user.save();
