@@ -1,4 +1,10 @@
 import { User } from './models/User';
 
-const user = new User({ id: 1 });
-user.fetch();
+// Update existing record
+// const user = new User({ id: 1 });
+// user.set({ name: 'New Name', age: 999 });
+// user.save();
+
+// Add new record
+const user = new User({ name: 'new record', age: 21 });
+user.save();
