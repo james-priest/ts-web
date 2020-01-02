@@ -7,8 +7,19 @@ const user = new User({ name: 'James', age: 49 });
 // console.log(user.get('name'));
 // console.log(user.get('age'));
 
-user.on('change', () => {});
-user.on('change', () => {});
-user.on('destroy', () => {});
+user.on('change', () => {
+  console.log('change 1');
+});
+user.on('change', () => {
+  console.log('change 2');
+});
+user.on('destroy', () => {
+  console.log('destroy 1');
+});
 
 console.log(user);
+
+user.trigger('');
+user.trigger('destroy');
+user.trigger('asdf');
+user.trigger('change');
