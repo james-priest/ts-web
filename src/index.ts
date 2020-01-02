@@ -1,25 +1,18 @@
-import { User } from './models/User';
+import axios from 'axios';
 
-const user = new User({ name: 'James', age: 49 });
+axios
+  .post('http://localhost:3000/users', {
+    name: 'myName',
+    age: 30
+  })
+  .then((response) => {
+    console.log('response', response);
+    return response.data.id;
+    // return response;
+  })
+  .then((returnId: number) => {
+    axios.get(`http://localhost:3000/users/${returnId}`);
+  })
+  .catch((err) => console.log('err', err));
 
-// user.set({ name: 'Steve' });
-
-// console.log(user.get('name'));
-// console.log(user.get('age'));
-
-user.on('change', () => {
-  console.log('change 1');
-});
-user.on('change', () => {
-  console.log('change 2');
-});
-user.on('destroy', () => {
-  console.log('destroy 1');
-});
-
-console.log(user);
-
-user.trigger('');
-user.trigger('destroy');
-user.trigger('asdf');
-user.trigger('change');
+// axios.get(`http://localhost:3000/users/${newId}`);
