@@ -1,11 +1,15 @@
-// import { User } from '../models/User';
+import { Model } from '../models/Model';
 
 interface ModelForView {
   // on: (eventName: string, callback: () => void) => void;
   on(eventName: string, callback: () => void): void;
 }
 
-export abstract class View<T extends ModelForView> {
+// Whenever we create view, we will pass in two generic types.
+// T which applies generic constraint of Model.
+// and K which will be used as the type for Model.
+// T will have all same props as Model<K> with K loaded into Model.
+export abstract class View<T extends Model<K>, K> {
   abstract eventsMap(): { [key: string]: () => void };
   abstract template(): string;
 
